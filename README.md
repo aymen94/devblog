@@ -35,7 +35,7 @@
 clone and run, you're live in 30 seconds:
 
 ```bash
-npx degit aymen94/devpen my-blog && cd my-blog && npm install && npm run dev
+npx degit aymen94/devblog my-blog && cd my-blog && npm install && npm run dev
 ```
 
 That's it! Open [http://localhost:5173](http://localhost:5173) and start blogging. 🚀
@@ -45,7 +45,7 @@ That's it! Open [http://localhost:5173](http://localhost:5173) and start bloggin
 
 | Step | Command | Description |
 |------|---------|-------------|
-| 1 | `npx degit aymen94/devpen my-blog` | Clones the template (without git history) |
+| 1 | `npx degit aymen94/devblog my-blog` | Clones the template (without git history) |
 | 2 | `cd my-blog` | Enters the project folder |
 | 3 | `npm install` | Installs dependencies |
 | 4 | `npm run dev` | Starts the dev server |
