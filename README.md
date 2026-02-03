@@ -1,8 +1,4 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/aymen94/devblog/main/.github/logo.svg" alt="devblog Logo" width="120" height="120">
-</p>
-
-<h1 align="center">⚡ devblog</h1>
+<h1 align="center">⚡Devblog</h1>
 
 <p align="center">
   <strong>A blazing-fast, developer-first blogging platform built with React & Vite</strong>
