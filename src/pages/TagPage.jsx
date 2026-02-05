@@ -65,7 +65,6 @@ export function TagPage() {
         <p>{posts.length} post{posts.length !== 1 ? 's' : ''} found</p>
       </header>
 
-<<<<<<< HEAD
       {posts.length > 0 && (
         <>
           <SearchBar value={searchQuery} onChange={handleSearchChange} />
@@ -95,16 +94,6 @@ export function TagPage() {
             onPageChange={setCurrentPage}
           />
         </>
-=======
-      {posts.length === 0 ? (
-        <p className="no-posts">No posts found with this tag.</p>
-      ) : (
-        <div className="posts-grid">
-          {posts.map((post) => (
-            <PostCard key={post.slug} post={post} />
-          ))}
-        </div>
->>>>>>> 198a29221c1f38fae958d15716394daa16231b7c
       )}
     </div>
   );

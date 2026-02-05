@@ -229,11 +229,10 @@ export const siteConfig = {
 | `author` | string | - | Default author name |
 | `siteUrl` | string | - | Your production URL (for SEO) |
 | `githubUrl` | string | - | GitHub profile link (empty to hide) |
-| `twitterUrl` | string | - | Twitter profile link (empty to hide) |
+| `xUrl` | string | - | Twitter profile link (empty to hide) |
 | `linkedinUrl` | string | - | LinkedIn profile link (empty to hide) |
 | `nav` | array | - | Navigation menu items |
 | `footerText` | string | - | Custom footer text |
-| `showSourceLink` | boolean | true | Show "View Source" in footer |
 | `postsPerPage` | number | 10 | Posts per page on homepage |
 | `showReadingTime` | boolean | true | Display reading time on posts |
 | `showAuthor` | boolean | true | Display author on posts |

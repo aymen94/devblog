@@ -5,6 +5,9 @@ import { TagList } from '../components/TagList';
 import { ReadingProgress } from '../components/ReadingProgress';
 import { RelatedPosts } from '../components/RelatedPosts';
 import { BackToTop } from '../components/BackToTop';
+import { PostNavigation } from '../components/PostNavigation';
+import { SEOHead } from '../components/SEOHead';
+import { ReadingTimeRemaining } from '../components/ReadingTimeRemaining';
 
 export function PostPage() {
   const { slug } = useParams();
@@ -20,11 +23,17 @@ export function PostPage() {
     );
   }
 
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
-
   return (
     <>
+      <SEOHead
+        title={post.title}
+        description={post.description}
+        keywords={post.tags}
+        author={post.author}
+        publishedDate={post.date}
+      />
       <ReadingProgress />
+      <ReadingTimeRemaining totalReadingTime={post.readingTime} />
       <article className="post-page">
         <header className="post-header">
           <Link to="/" className="back-link">← Back to Posts</Link>
@@ -44,6 +53,7 @@ export function PostPage() {
         </div>
 
         <footer className="post-footer">
+          <PostNavigation currentSlug={post.slug} />
           <RelatedPosts currentSlug={post.slug} tags={post.tags} />
         </footer>
       </article>

@@ -1,22 +1,24 @@
 import { useState, useMemo } from 'react';
 import { getAllPosts, getAllTags } from '../utils/posts';
+import { posts } from '../data/posts';
 import { PostCard } from '../components/PostCard';
-import { TagList } from '../components/TagList';
 import { SearchBar } from '../components/SearchBar';
 import { PostControls } from '../components/PostControls';
 import { Pagination } from '../components/Pagination';
+import { SEOHead } from '../components/SEOHead';
+import {postsPerPageValue} from '../config/site';
 
 export function HomePage() {
-  const posts = getAllPosts();
+  const allPosts = getAllPosts();
   const tags = getAllTags();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState('asc'); // 'asc' = oldest first (default)
-  const [postsPerPage, setPostsPerPage] = useState(5);
+  const [postsPerPage, setPostsPerPage] = useState(postsPerPageValue);
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredAndSortedPosts = useMemo(() => {
-    let result = [...posts];
+    let result = [...allPosts];
 
     // Filter by search query
     if (searchQuery.trim()) {
@@ -37,7 +39,7 @@ export function HomePage() {
     });
 
     return result;
-  }, [posts, searchQuery, sortOrder]);
+  }, [allPosts, searchQuery, sortOrder]);
 
   // Pagination
   const totalPages = Math.ceil(filteredAndSortedPosts.length / postsPerPage);
@@ -62,14 +64,21 @@ export function HomePage() {
     setCurrentPage(1);
   };
 
+  const publishedPosts = posts.filter((post) => post.published);
+
   return (
     <div className="home-page">
+      <SEOHead
+        title="Home"
+        description="A developer blog about coding, web development, and open source projects."
+        type="website"
+      />
+
+      <SearchBar value={searchQuery} onChange={handleSearchChange} />
 
       <section className="posts-section">
-        <h2>Latest Posts</h2>
-        
-        <SearchBar value={searchQuery} onChange={handleSearchChange} />
-        
+
+
         <PostControls
           sortOrder={sortOrder}
           onSortChange={handleSortChange}
@@ -77,7 +86,7 @@ export function HomePage() {
           onPostsPerPageChange={handlePostsPerPageChange}
         />
 
-        {posts.length === 0 ? (
+        {allPosts.length === 0 ? (
           <p className="no-posts">
             No posts yet. Add markdown files to <code>src/posts/</code> and run{' '}
             <code>npm run generate-posts</code>
