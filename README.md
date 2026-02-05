@@ -178,6 +178,70 @@ Your post is now live! 🚀
 
 ## 🎨 Customization
 
+### Site Configuration
+
+Edit `src/config/site.js` to customize your blog:
+
+```javascript
+export const siteConfig = {
+  // Site Information
+  title: "My Awesome Blog",
+  description: "A blog about coding and technology",
+  author: "Your Name",
+  
+  // URLs
+  siteUrl: "https://yourdomain.com",
+  githubUrl: "https://github.com/yourusername",
+  twitterUrl: "https://twitter.com/yourusername",
+  linkedinUrl: "https://linkedin.com/in/yourusername",
+  
+  // Navigation
+  nav: [
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+  ],
+  
+  // Footer
+  footerText: "Built with ❤️ using DevBlog",
+  showSourceLink: true,
+  
+  // Features
+  postsPerPage: 10,
+  showReadingTime: true,
+  showAuthor: true,
+  showTags: true,
+  
+  // SEO
+  defaultOgImage: "/og-image.png",
+  twitterHandle: "@yourusername",
+  
+  // Theme
+  defaultTheme: "dark", // "dark" | "light" | "system"
+};
+```
+
+#### Configuration Reference
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `title` | string | "DevBlog" | Site title shown in header and browser tab |
+| `description` | string | - | Site description for SEO |
+| `author` | string | - | Default author name |
+| `siteUrl` | string | - | Your production URL (for SEO) |
+| `githubUrl` | string | - | GitHub profile link (empty to hide) |
+| `twitterUrl` | string | - | Twitter profile link (empty to hide) |
+| `linkedinUrl` | string | - | LinkedIn profile link (empty to hide) |
+| `nav` | array | - | Navigation menu items |
+| `footerText` | string | - | Custom footer text |
+| `showSourceLink` | boolean | true | Show "View Source" in footer |
+| `postsPerPage` | number | 10 | Posts per page on homepage |
+| `showReadingTime` | boolean | true | Display reading time on posts |
+| `showAuthor` | boolean | true | Display author on posts |
+| `showTags` | boolean | true | Display tags on posts |
+| `defaultOgImage` | string | - | Default Open Graph image |
+| `twitterHandle` | string | - | Twitter handle for cards |
+| `defaultTheme` | string | "dark" | Default theme ("dark", "light", "system") |
+
 ### Theming
 
 devblog uses CSS custom properties for easy theming. Edit `src/styles/global.css`:

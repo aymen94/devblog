@@ -2,6 +2,9 @@ import { useParams, Link } from 'react-router-dom';
 import { getPostBySlug, formatDate } from '../utils/posts';
 import { PostContent } from '../components/PostContent';
 import { TagList } from '../components/TagList';
+import { ReadingProgress } from '../components/ReadingProgress';
+import { RelatedPosts } from '../components/RelatedPosts';
+import { BackToTop } from '../components/BackToTop';
 
 export function PostPage() {
   const { slug } = useParams();
@@ -17,44 +20,34 @@ export function PostPage() {
     );
   }
 
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+
   return (
-    <article className="post-page">
-      <header className="post-header">
-        <Link to="/" className="back-link">← Back to Posts</Link>
-        <h1 className="post-title">{post.title}</h1>
-        <div className="post-meta">
-          <time dateTime={post.date}>{formatDate(post.date)}</time>
-          <span className="separator">•</span>
-          <span>{post.readingTime}</span>
-          <span className="separator">•</span>
-          <span>By {post.author}</span>
-        </div>
-        <TagList tags={post.tags} />
-      </header>
+    <>
+      <ReadingProgress />
+      <article className="post-page">
+        <header className="post-header">
+          <Link to="/" className="back-link">← Back to Posts</Link>
+          <h1 className="post-title">{post.title}</h1>
+          <div className="post-meta">
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            <span className="separator">•</span>
+            <span>{post.readingTime}</span>
+            <span className="separator">•</span>
+            <span>By {post.author}</span>
+          </div>
+          <TagList tags={post.tags} />
+        </header>
 
-      <PostContent content={post.content} />
-
-      <footer className="post-footer">
-        <div className="share-section">
-          <span>Share this post:</span>
-          <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="share-link"
-          >
-            Twitter
-          </a>
-          <a
-            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="share-link"
-          >
-            LinkedIn
-          </a>
+        <div className="post-main">
+          <PostContent content={post.content} />
         </div>
-      </footer>
-    </article>
+
+        <footer className="post-footer">
+          <RelatedPosts currentSlug={post.slug} tags={post.tags} />
+        </footer>
+      </article>
+      <BackToTop />
+    </>
   );
 }
