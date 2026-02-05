@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import { useTheme } from '../context/ThemeContext';
 
 export function Header() {
   const { darkMode, toggleTheme } = useTheme();
 
+=======
+
+export function Header() {
+>>>>>>> 198a29221c1f38fae958d15716394daa16231b7c
   return (
     <header className="header">
       <div className="header-content">
@@ -21,6 +26,7 @@ export function Header() {
           >
             GitHub
           </a>
+<<<<<<< HEAD
           <button 
             onClick={toggleTheme} 
             className="theme-toggle"
@@ -28,6 +34,8 @@ export function Header() {
           >
             {darkMode ? '☀️' : '🌙'}
           </button>
+=======
+>>>>>>> 198a29221c1f38fae958d15716394daa16231b7c
         </nav>
       </div>
     </header>
